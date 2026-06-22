@@ -3,85 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>BIO: SER_38</title>
+    <title>SER_38 | System Compromised</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
         :root {
-            --text-primary: #ffffff;
-            --text-secondary: #a1a1a6;
-            --accent-blue: #0a84ff;
-            --accent-green: #39ff14; 
-            --glass-bg: rgba(15, 15, 17, 0.7);
-            --glass-border: rgba(48, 209, 88, 0.15);
-            --card-hover-bg: rgba(20, 25, 20, 0.6);
-        }
-
-        /* --- КАСТОМНЫЙ КУРСОР В СТИЛЕ OSU! --- */
-        * {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%2339ff14" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="%2339ff14"/></svg>') 12 12, auto !important;
-        }
-
-        a, button, .action-btn, .card, .copy-btn {
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(57,255,20,0.3)" stroke="%2339ff14" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="%2339ff14"/></svg>') 12 12, pointer !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
-            to { opacity: 1; transform: translateY(0); filter: blur(0); }
-        }
-
-        @keyframes slideUpCard {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+            --accent-red: #ff0033;
+            --neon-pink: #ff00c1;
+            --neon-blue: #00fff9;
+            --hacker-green: #39ff14;
+            --glass-bg: rgba(15, 5, 5, 0.75);
+            --glass-border: rgba(255, 0, 51, 0.3);
+            --card-hover-bg: rgba(30, 5, 5, 0.85);
         }
 
         body, html {
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Courier New", "SF Pro Display", Arial, sans-serif;
-            background-color: #000;
-            color: var(--text-primary);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            -webkit-font-smoothing: antialiased;
+            background-color: #050505;
+            color: #fff;
+            font-family: 'Courier New', Courier, monospace;
+            height: 100vh;
             overflow-x: hidden;
-            padding: 40px 0;
+            overflow-y: auto;
+            user-select: none;
         }
 
-        /* --- ЭФФЕКТ СТАРОГО МОНИТОРА И ВИНЬЕТКА --- */
-        .scanlines {
+        /* --- КАСТОМНЫЙ КУРСОР --- */
+        * {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="%23ff0033" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="%23ff0033"/></svg>') 12 12, auto !important;
+        }
+
+        a, button, .action-btn, .card, .copy-btn {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="rgba(255,0,51,0.3)" stroke="%23ff0033" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="%23ff0033"/></svg>') 12 12, pointer !important;
+        }
+
+        /* --- ВИРУСНЫЕ ГЛИТЧИ ЭКРАНА (ВОЗВРАЩЕНЫ) --- */
+        .virus-glitch-active {
+            animation: severe-glitch 0.3s infinite alternate;
+        }
+
+        @keyframes severe-glitch {
+            0% { filter: hue-rotate(0deg) contrast(100%) invert(0); transform: translate(0,0) skew(0deg); }
+            20% { filter: hue-rotate(90deg) contrast(200%) invert(0.1); transform: translate(-5px,5px) skew(2deg); }
+            40% { filter: hue-rotate(-90deg) contrast(300%) invert(0.2); transform: translate(5px,-5px) skew(-2deg); }
+            60% { filter: hue-rotate(180deg) contrast(150%) invert(0.8); transform: translate(-10px,0px) skew(5deg); clip-path: inset(10% 0 40% 0); }
+            80% { filter: hue-rotate(0deg) contrast(100%) invert(0); transform: translate(10px,10px) skew(-5deg); clip-path: inset(50% 0 10% 0); }
+            100% { filter: hue-rotate(45deg) contrast(250%) invert(0.5); transform: translate(0,0) skew(0deg); clip-path: inset(0 0 0 0); }
+        }
+
+        /* --- ФОН С БЕСКОНЕЧНЫМ IP --- */
+        #ip-bg {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200vw;
+            height: 200vh;
+            z-index: 0;
+            color: rgba(255, 0, 51, 0.2); 
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.2;
+            word-break: break-all;
+            text-align: justify;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in;
+            animation: creep-move 10s linear infinite;
+        }
+
+        @keyframes creep-move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(5%, 5%); }
+        }
+
+        /* --- ЭКРАН 1: ГЛАЗ --- */
+        #eye-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-            background-size: 100% 4px, 3px 100%;
-            z-index: 9998;
-            pointer-events: none;
-            opacity: 0.5;
-            box-shadow: inset 0 0 150px rgba(0,0,0,0.9); 
+            background-color: #000;
+            z-index: 10000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease-in-out;
         }
 
-        /* --- ЭКРАН ВЗЛОМА --- */
+        .eye-svg {
+            width: 150px;
+            height: 150px;
+            stroke: var(--accent-red);
+            fill: none;
+            stroke-width: 4;
+            filter: drop-shadow(0 0 20px var(--accent-red));
+            animation: blink 3s infinite, glitch-eye 0.2s infinite alternate;
+        }
+
+        .eye-text {
+            margin-top: 30px;
+            color: var(--accent-red);
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--accent-red);
+            animation: glitch-anim 0.1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 45%, 55%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.1); }
+        }
+
+        @keyframes glitch-eye {
+            0% { transform: translate(2px, 2px) scale(1.05); }
+            100% { transform: translate(-2px, -2px) scale(0.95); }
+        }
+
+        /* --- ЭКРАН 2: ВЗЛОМ --- */
         #hacker-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #000;
-            color: var(--accent-green);
-            font-family: 'Courier New', Courier, monospace;
+            background-color: transparent;
+            color: var(--hacker-green);
             z-index: 9999;
             padding: 20px;
             box-sizing: border-box;
             overflow: hidden;
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: flex-end;
-            transition: opacity 1.5s ease-out;
+            transition: opacity 0.5s ease-out;
+            opacity: 0;
         }
 
         #terminal-output {
@@ -89,74 +150,137 @@
             word-wrap: break-word;
             font-size: 16px;
             line-height: 1.4;
-            text-shadow: 0 0 8px var(--accent-green);
+            text-shadow: 0 0 8px var(--hacker-green);
+            background: rgba(0, 0, 0, 0.85); 
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid var(--hacker-green);
+            max-width: 800px;
         }
 
         .hack-red {
-            color: #ff0033;
-            font-size: 32px;
+            color: var(--accent-red);
+            font-size: 42px;
             font-weight: bold;
-            text-shadow: 0 0 15px #ff0033;
+            text-shadow: 0 0 25px var(--accent-red);
             margin: 15px 0;
             display: block;
-            animation: glitch-anim 0.2s infinite;
+            text-transform: uppercase;
         }
 
         .hack-info {
             color: #fff;
-            font-size: 18px;
-            text-shadow: 0 0 5px #fff;
+            font-size: 22px;
+            text-shadow: 0 0 8px #fff;
+            display: block;
+            margin-top: 5px;
         }
 
-        /* --- ФОН MATRIX --- */
+        /* --- ФЕЙКОВЫЕ ОКНА ОШИБОК (РЕТРО СТИЛЬ) --- */
+        .error-popup {
+            position: fixed;
+            background: #d4d0c8;
+            border-top: 2px solid #fff;
+            border-left: 2px solid #fff;
+            border-right: 2px solid #404040;
+            border-bottom: 2px solid #404040;
+            width: 320px;
+            color: #000;
+            font-family: 'Tahoma', 'Segoe UI', sans-serif;
+            box-shadow: 4px 4px 10px rgba(0,0,0,0.6);
+            z-index: 5; 
+            pointer-events: none;
+            padding: 2px;
+        }
+
+        .error-header {
+            background: #0000a0;
+            color: #fff;
+            padding: 3px 6px;
+            font-weight: bold;
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+
+        .error-body {
+            padding: 20px 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+        }
+
+        .error-icon {
+            font-size: 32px;
+            filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.3));
+        }
+
+        /* --- ФОН MATRIX (БЕГУЩИЙ ЗЕЛЕНЫЙ КОД) --- */
         #matrix-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: 0;
             opacity: 0;
-            transition: opacity 2s ease-in;
+            transition: opacity 1s ease-in;
             pointer-events: none;
         }
 
-        /* Главный контейнер */
-        .glass-container {
+        /* --- ГЛАВНЫЙ ЭКРАН С БИО --- */
+        #main-content {
             position: relative;
-            z-index: 1;
-            width: 90%;
-            max-width: 850px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px) saturate(150%);
-            -webkit-backdrop-filter: blur(20px) saturate(150%);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 60px 50px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(57, 255, 20, 0.05);
+            z-index: 10;
+            width: 100vw;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
-            gap: 50px;
-            box-sizing: border-box;
+            justify-content: center;
+            align-items: flex-start;
             opacity: 0;
             pointer-events: none;
+            padding: 40px 0;
         }
 
-        .glass-container.visible {
-            animation: fadeIn 1s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+        #main-content.visible {
+            animation: fadeInScale 0.5s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
             pointer-events: auto;
         }
 
-        /* Шапка */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(1.1); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .glass-container {
+            width: 90%;
+            max-width: 850px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px) saturate(150%);
+            -webkit-backdrop-filter: blur(15px) saturate(150%);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 60px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 30px rgba(255, 0, 51, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Шапка био */
         .header { text-align: center; position: relative; }
 
         .status-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(57, 255, 20, 0.1);
-            border: 1px solid rgba(57, 255, 20, 0.5);
-            color: var(--accent-green);
+            background: rgba(57, 255, 20, 0.1); 
+            border: 1px solid rgba(57, 255, 20, 0.5); 
+            color: var(--hacker-green); 
             padding: 6px 14px;
             border-radius: 2px;
             font-size: 13px;
@@ -165,16 +289,15 @@
             text-transform: uppercase;
             margin-bottom: 30px;
             box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
-            animation: pulse 2s infinite;
+            animation: pulse-green 1s infinite;
         }
 
-        @keyframes pulse {
+        @keyframes pulse-green {
             0% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(57, 255, 20, 0.7); }
+            50% { box-shadow: 0 0 30px rgba(57, 255, 20, 0.6); }
             100% { box-shadow: 0 0 10px rgba(57, 255, 20, 0.2); }
         }
 
-        /* Аватар с радаром */
         .avatar-container {
             position: relative;
             width: 140px;
@@ -189,7 +312,7 @@
             width: 110px;
             height: 110px;
             background: radial-gradient(circle, rgba(44,44,46,1) 0%, rgba(22,22,23,1) 100%);
-            border: 2px solid var(--accent-green);
+            border: 2px solid var(--hacker-green); 
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -222,37 +345,21 @@
 
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* GLITCH АНИМАЦИЯ */
-        .name {
-            font-size: 46px;
+        .nickname {
+            font-family: 'Courier New', Courier, monospace; 
+            font-size: 60px;
             font-weight: 900;
             margin: 0 0 10px 0;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
             color: #fff;
             text-transform: uppercase;
             position: relative;
             display: inline-block;
-        }
-
-        .name::before, .name::after {
-            content: "SER_38";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: transparent;
-        }
-
-        .name::before {
-            left: 3px;
-            text-shadow: -2px 0 #ff00c1;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim 3s infinite linear alternate-reverse;
-        }
-
-        .name::after {
-            left: -3px;
-            text-shadow: -2px 0 #00fff9;
-            clip: rect(44px, 450px, 56px, 0);
-            animation: glitch-anim2 3s infinite linear alternate-reverse;
+            text-shadow: 
+                3px 3px 0px #000, 
+                6px 6px 0px var(--neon-blue),
+                -3px -3px 10px var(--hacker-green),
+                0 0 30px var(--hacker-green);
         }
 
         /* Печатная машинка для локации */
@@ -264,12 +371,12 @@
             display: inline-block;
             overflow: hidden;
             white-space: nowrap;
-            border-right: 2px solid var(--accent-green);
+            border-right: 2px solid var(--hacker-green);
             width: 0;
         }
 
         .glass-container.visible .subtitle {
-            animation: typing 2s steps(24, end) 1.5s forwards, blink-caret 0.8s step-end infinite;
+            animation: typing 2s steps(26, end) 1.5s forwards, blink-caret 0.8s step-end infinite;
         }
 
         @keyframes typing { to { width: 26ch; } }
@@ -282,32 +389,24 @@
             gap: 25px;
         }
 
-        /* Карточки */
         .card {
-            background: rgba(5, 10, 5, 0.7);
-            border: 1px solid rgba(57, 255, 20, 0.2);
+            background: rgba(20, 5, 5, 0.8);
+            border: 1px solid rgba(255, 0, 51, 0.3);
             border-radius: 8px; 
-            padding: 35px 30px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            padding: 30px 25px;
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            opacity: 0;
         }
-
-        /* Очередность появления карточек */
-        .glass-container.visible .card:nth-child(1) { animation: slideUpCard 0.6s ease forwards 0.5s; }
-        .glass-container.visible .card:nth-child(2) { animation: slideUpCard 0.6s ease forwards 0.7s; }
-        .glass-container.visible .card:nth-child(3) { animation: slideUpCard 0.6s ease forwards 0.9s; }
-        .glass-container.visible .card:nth-child(4) { animation: slideUpCard 0.6s ease forwards 1.1s; }
 
         .card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 2px; height: 100%;
-            background: var(--accent-green);
+            background: var(--accent-red);
             transform: scaleY(0);
             transition: transform 0.4s ease;
             transform-origin: bottom;
@@ -315,9 +414,9 @@
 
         .card:hover {
             background: var(--card-hover-bg);
-            transform: translateY(-10px);
-            border-color: rgba(57, 255, 20, 0.8);
-            box-shadow: 0 15px 40px rgba(57, 255, 20, 0.15), inset 0 0 20px rgba(57, 255, 20, 0.1);
+            transform: translateY(-5px);
+            border-color: rgba(255, 0, 51, 0.8);
+            box-shadow: 0 15px 40px rgba(255, 0, 51, 0.2), inset 0 0 20px rgba(255, 0, 51, 0.1);
         }
 
         .card:hover::before { transform: scaleY(1); }
@@ -331,19 +430,19 @@
 
         .card-icon {
             font-size: 30px;
-            background: rgba(57, 255, 20, 0.1);
+            background: rgba(255, 0, 51, 0.1);
             width: 50px;
             height: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 10px;
-            border: 1px solid rgba(57, 255, 20, 0.4);
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            border: 1px solid rgba(255, 0, 51, 0.4);
+            box-shadow: 0 0 15px rgba(255, 0, 51, 0.2);
         }
 
         .card-title {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             margin: 0;
             letter-spacing: 1px;
@@ -351,10 +450,10 @@
         }
 
         .card-desc {
-            font-size: 16px;
-            color: var(--text-secondary);
+            font-size: 15px;
+            color: #d1d1d1;
             line-height: 1.6;
-            margin: 0 0 30px 0;
+            margin: 0 0 25px 0;
         }
         
         .tech-stack {
@@ -367,41 +466,40 @@
         .tech-badge {
             font-size: 11px;
             background: rgba(0,0,0,0.5);
-            color: var(--accent-green);
+            color: var(--accent-red);
             padding: 5px 10px;
             border-radius: 2px;
             font-family: monospace;
-            border: 1px solid rgba(57, 255, 20, 0.3);
+            border: 1px solid rgba(255, 0, 51, 0.3);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* --- КИБЕРПАНК КНОПКИ --- */
+        /* --- КНОПКИ --- */
         .action-btn {
             display: block;
             text-align: center;
-            padding: 16px;
-            font-size: 16px;
+            padding: 14px;
+            font-size: 15px;
             font-weight: bold;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-decoration: none;
             transition: all 0.2s ease;
             position: relative;
             z-index: 2;
             text-transform: uppercase;
-            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
 
         .btn-roblox {
-            background: var(--accent-blue);
+            background: rgba(10, 132, 255, 0.3);
             color: #fff;
-            text-shadow: 0 0 5px rgba(255,255,255,0.5);
+            border-left: 3px solid var(--accent-blue);
         }
 
         .btn-vpn {
             background: rgba(57, 255, 20, 0.2);
-            color: var(--accent-green);
-            border-left: 4px solid var(--accent-green);
+            color: var(--hacker-green);
+            border-left: 3px solid var(--hacker-green);
         }
 
         .btn-roblox:hover, .btn-vpn:hover {
@@ -409,107 +507,46 @@
             transform: scale(1.02);
         }
 
-        /* --- БЛОК СОЦСЕТЕЙ --- */
-        .social-card {
-            grid-column: 1 / -1; 
-            text-align: center;
-            background: linear-gradient(180deg, rgba(5,10,5,0.7) 0%, rgba(10,20,30,0.5) 100%);
-        }
-
+        /* БЛОК СОЦСЕТЕЙ */
+        .social-card { grid-column: 1 / -1; text-align: center; }
         .social-card .card-header { justify-content: center; }
-
-        .social-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 15px;
-        }
-
-        .btn-tg {
-            background: rgba(0, 136, 204, 0.2);
-            color: #33aadd;
-            border-left: 4px solid #33aadd;
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .btn-tg:hover {
-            background: rgba(0, 136, 204, 0.4);
-            box-shadow: 0 0 20px rgba(0, 136, 204, 0.3);
-        }
-
         .btn-ds {
             background: rgba(88, 101, 242, 0.2);
             color: #7289da;
-            border-left: 4px solid #7289da;
-            flex: 1;
-            min-width: 250px;
-            border-top: none;
-            border-right: none;
-            border-bottom: none;
+            border-left: 3px solid #7289da;
+            width: 100%;
         }
+        .btn-ds:hover { background: rgba(88, 101, 242, 0.4); }
 
-        .btn-ds:hover {
-            background: rgba(88, 101, 242, 0.4);
-            box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
-        }
-
-        /* --- БЛОК ДОНАТОВ --- */
+        /* БЛОК ДОНАТОВ */
         .donate-card {
             grid-column: 1 / -1; 
-            align-items: center;
             text-align: center;
-            background: linear-gradient(180deg, rgba(5,10,5,0.7) 0%, rgba(20,10,5,0.8) 100%);
             border-color: rgba(255, 140, 0, 0.3);
         }
-
-        .donate-card:hover {
-            border-color: rgba(255, 140, 0, 0.8);
-            box-shadow: 0 15px 40px rgba(255, 140, 0, 0.15);
-        }
-        
-        .donate-card::before { background: #ffb74d; }
-
-        .donate-card .card-icon {
-            border-color: rgba(255, 140, 0, 0.5);
-            background: rgba(255, 140, 0, 0.1);
-            color: #ffb74d;
-            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
-        }
-
+        .donate-card .card-icon { color: #ffb74d; border-color: #ffb74d; background: rgba(255,140,0,0.1); }
         .donate-card .card-header { justify-content: center; }
-
-        .btn-donate {
-            background: #ff8c00;
-            color: #fff;
-            margin-bottom: 25px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
+        .btn-donate { background: #ff8c00; color: #fff; margin-bottom: 20px; }
+        
         .card-copy-box {
             display: inline-flex;
             align-items: center;
             justify-content: space-between;
             background: rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(255, 140, 0, 0.5);
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 4px;
             gap: 20px;
-            max-width: 100%;
-            flex-wrap: wrap;
-            box-shadow: inset 0 0 15px rgba(255, 140, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .card-copy-box code {
             color: #fff;
-            font-size: 22px;
-            letter-spacing: 3px;
+            font-size: 20px;
+            letter-spacing: 2px;
             font-family: "Courier New", Courier, monospace;
-            font-weight: bold;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
         }
 
         .copy-btn {
@@ -518,167 +555,263 @@
             color: #ffb74d;
             font-family: "Courier New", monospace;
             font-weight: bold;
-            font-size: 16px;
-            padding: 8px 15px;
-            transition: all 0.2s ease;
-            outline: none;
+            padding: 6px 12px;
             clip-path: polygon(8px 0, 100% 0, 100% calc(100% - 8px), calc(100% - 8px) 100%, 0 100%, 0 8px);
         }
-
-        .copy-btn:hover {
-            background: #ffb74d;
-            color: #000;
-            transform: scale(1.05);
-        }
+        .copy-btn:hover { background: #ffb74d; color: #000; }
 
         @media (max-width: 768px) {
-            .glass-container { width: 92%; padding: 40px 20px; gap: 40px; margin: 20px 0; }
-            .projects-grid { grid-template-columns: 1fr; gap: 20px; }
-            body { align-items: flex-start; overflow-y: auto; padding: 20px 0; }
-            .card-copy-box { flex-direction: column; gap: 10px; padding: 15px; }
-            .btn-donate { width: 100%; }
-            .name { font-size: 38px; }
-            .social-buttons { flex-direction: column; }
-            .btn-tg, .btn-ds { width: 100%; }
+            .glass-container { width: 95%; padding: 40px 20px; gap: 30px; margin: 0; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .nickname { font-size: 45px; }
+            .card-copy-box { flex-direction: column; gap: 10px; }
+            .card-copy-box code { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
+    <div id="ip-bg"></div>
+
+    <canvas id="matrix-bg"></canvas>
+
+    <div id="error-container"></div>
+
+    <div id="eye-screen">
+        <svg class="eye-svg" viewBox="0 0 100 100">
+            <path d="M10 50 C 30 20, 70 20, 90 50 C 70 80, 30 80, 10 50 Z" />
+            <circle cx="50" cy="50" r="14" fill="#ff0033" />
+            <circle cx="50" cy="50" r="5" fill="#000" />
+        </svg>
+        <div class="eye-text">ВАС ЗАМЕТИЛИ</div>
+    </div>
+
     <div id="hacker-screen">
         <div id="terminal-output"></div>
     </div>
 
-    <div class="scanlines"></div>
-
-    <canvas id="matrix-bg"></canvas>
-
-    <div class="glass-container" id="main-content">
-        
-        <div class="header">
-            <div class="status-badge">System Overridden</div>
-            <div class="avatar-container">
-                <div class="avatar">S</div>
-            </div>
-            <h1 class="name">SER_38</h1><br>
-            <span class="subtitle">> user_loc: Voronezh, RU</span>
-        </div>
-
-        <div class="projects-grid">
+    <div id="main-content">
+        <div class="glass-container">
             
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">🎮</div>
-                        <h2 class="card-title">Roblox Dev</h2>
-                    </div>
-                    <p class="card-desc">
-                        Проектирую и программирую захватывающие миры в Roblox. Мой флагман — масштабная игра про Москву с проработанной атмосферой.
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Lua_Scripting</span>
-                        <span class="tech-badge">R_Studio</span>
-                        <span class="tech-badge">Dev_Mode</span>
-                    </div>
+            <div class="header">
+                <div class="status-badge">SYSTEM OVERRIDDEN</div>
+                <div class="avatar-container">
+                    <div class="avatar">S</div>
                 </div>
-                <a href="https://www.roblox.com/games/72727745720809/RP" class="action-btn btn-roblox" target="_blank">[ EXECUTE: MOSCOW_RP ]</a>
+                <h1 class="name nickname">SER_38</h1><br>
+                <div class="subtitle">> user_loc: Voronezh, RU</div>
             </div>
 
-            <div class="card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">🌐</div>
-                        <h2 class="card-title">Flux VPN</h2>
+            <div class="projects-grid">
+                
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon">🎮</div>
+                            <h2 class="card-title">Roblox Dev</h2>
+                        </div>
+                        <p class="card-desc">Проектирую и программирую захватывающие миры в Roblox. Мой флагман — масштабная игра про Москву с проработанной атмосферой.</p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Lua_Scripting</span>
+                            <span class="tech-badge">R_Studio</span>
+                        </div>
                     </div>
-                    <p class="card-desc">
-                        Разработал и поддерживаю собственный VPN сервис. Фокус на высокой скорости, стабильности соединения и обходе блокировок. <strong>Он полностью бесплатный.</strong>
-                    </p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">Net_Protocol</span>
-                        <span class="tech-badge">Bypass_FW</span>
-                        <span class="tech-badge">Free_Access</span>
+                    <a href="https://www.roblox.com/games/72727745720809/RP" class="action-btn btn-roblox" target="_blank">[ EXECUTE: MOSCOW_RP ]</a>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon">🌐</div>
+                            <h2 class="card-title">Flux VPN</h2>
+                        </div>
+                        <p class="card-desc">Разработал собственный VPN сервис. Фокус на высокой скорости, стабильности соединения и обходе блокировок. <strong>Он полностью бесплатный.</strong></p>
+                        <div class="tech-stack">
+                            <span class="tech-badge">Net_Protocol</span>
+                            <span class="tech-badge">Bypass_FW</span>
+                        </div>
+                    </div>
+                    <a href="https://ser38off.github.io/flux-vpn" class="action-btn btn-vpn" target="_blank">[ CONNECT: FLUX_VPN ]</a>
+                </div>
+
+                <div class="card social-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon">🔗</div>
+                            <h2 class="card-title">Comms_Link</h2>
+                        </div>
+                        <p class="card-desc">Мои соцсети:</p>
+                        <button class="action-btn btn-ds" id="dsBtn" onclick="copyDiscord()">[ DISCORD: ser_38.dev ]</button>
                     </div>
                 </div>
-                <a href="https://ser38off.github.io/flux-vpn" class="action-btn btn-vpn" target="_blank">[ CONNECT: FLUX_VPN ]</a>
-            </div>
 
-            <!-- БЛОК СОЦСЕТЕЙ -->
-            <div class="card social-card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">🔗</div>
-                        <h2 class="card-title">Comms_Link</h2>
-                    </div>
-                    <p class="card-desc">
-                        Мои соцсети:
-                    </p>
-                    <div class="social-buttons">
-                        <a href="https://t.me/SER38Off" class="action-btn btn-tg" target="_blank">[ TELEGRAM ]</a>
-                        <button class="action-btn btn-ds" id="dsBtn" onclick="copyDiscord()">[ DISCORD: ser38off ]</button>
+                <div class="card donate-card">
+                    <div>
+                        <div class="card-header">
+                            <div class="card-icon">💸</div>
+                            <h2 class="card-title">Support System</h2>
+                        </div>
+                        <p class="card-desc">Поддержать разработку (и оплату серверов):</p>
+                        <a href="https://www.donationalerts.com/r/ser_38" class="action-btn btn-donate" target="_blank">[ DONATION_ALERTS ]</a>
+                        <div class="card-copy-box">
+                            <span class="tech-badge" style="border-color: transparent;">CARD</span>
+                            <code id="cardNumberDisplay">2202 2067 8926 6512</code>
+                            <button class="copy-btn" id="copyBtn" onclick="copyCardNumber()">[ COPY ]</button>
+                        </div>
                     </div>
                 </div>
+
             </div>
-
-            <!-- БЛОК ДОНАТОВ -->
-            <div class="card donate-card">
-                <div>
-                    <div class="card-header">
-                        <div class="card-icon">💸</div>
-                        <h2 class="card-title">Support System</h2>
-                    </div>
-                    <p class="card-desc">
-                        Если тебе нравятся мои проекты и ты хочешь поддержать разработку (и оплату серверов), ты можешь закинуть донат:
-                    </p>
-                    
-                    <a href="https://www.donationalerts.com/r/ser_38" class="action-btn btn-donate" target="_blank">[ DONATION_ALERTS ]</a>
-
-                    <div class="card-copy-box">
-                        <span class="tech-badge" style="border-color: #ffb74d; color: #ffb74d; background: transparent;">BANK_CARD</span>
-                        <code id="cardNumberDisplay">2202 2067 8926 6512</code>
-                        <button class="copy-btn" id="copyBtn" onclick="copyCardNumber()">[ COPY ]</button>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
     </div>
 
     <script>
-        /* Функция копирования Дискорда */
         function copyDiscord() {
-            const discordUsername = "ser38off"; 
-            
-            navigator.clipboard.writeText(discordUsername).then(() => {
+            navigator.clipboard.writeText("ser_38.dev").then(() => {
                 const btn = document.getElementById('dsBtn');
-                btn.innerText = '[ COPIED_OK ]';
-                btn.style.color = '#fff';
-                
-                setTimeout(() => {
-                    btn.innerText = '[ DISCORD: ' + discordUsername + ' ]';
-                    btn.style.color = '#7289da';
-                }, 2000);
+                btn.innerText = '[ COPIED_OK ]'; btn.style.color = '#fff';
+                setTimeout(() => { btn.innerText = '[ DISCORD: ser_38.dev ]'; btn.style.color = '#7289da'; }, 2000);
             });
         }
 
-        /* Функция копирования карты */
         function copyCardNumber() {
-            const cardNumber = "2202206789266512";
-            navigator.clipboard.writeText(cardNumber).then(() => {
+            navigator.clipboard.writeText("2202206789266512").then(() => {
                 const btn = document.getElementById('copyBtn');
-                btn.innerText = '[ COPIED_OK ]';
-                btn.style.background = '#ffb74d';
-                btn.style.color = '#000';
-                
-                setTimeout(() => {
-                    btn.innerText = '[ COPY ]';
-                    btn.style.background = 'rgba(255, 140, 0, 0.2)';
-                    btn.style.color = '#ffb74d';
-                }, 2000);
+                btn.innerText = '[ COPIED ]'; btn.style.background = '#ffb74d'; btn.style.color = '#000';
+                setTimeout(() => { btn.innerText = '[ COPY ]'; btn.style.background = 'rgba(255, 140, 0, 0.2)'; btn.style.color = '#ffb74d'; }, 2000);
             });
         }
 
-        /* АНИМАЦИЯ MATRIX */
+        const eyeScreen = document.getElementById('eye-screen');
+        const hackerScreen = document.getElementById('hacker-screen');
+        const terminal = document.getElementById('terminal-output');
+        const mainContent = document.getElementById('main-content');
+        const matrixBg = document.getElementById('matrix-bg');
+        const ipBg = document.getElementById('ip-bg');
+        const errorContainer = document.getElementById('error-container');
+
+        // --- СЦЕНА 1: ЗАПУСК ---
+        setTimeout(() => {
+            eyeScreen.style.opacity = '0';
+            setTimeout(() => {
+                eyeScreen.style.display = 'none';
+                hackerScreen.style.display = 'flex';
+                setTimeout(() => { hackerScreen.style.opacity = '1'; startHackSequence(); }, 50);
+            }, 1000);
+        }, 2000);
+
+        // --- СЦЕНА 2: ВЗЛОМ ---
+        const hackLines = [
+            "INJECTING TROJAN.WIN32.SEMPK9...",
+            "BYPASSING WINDOWS DEFENDER... [OK]",
+            "ELEVATING PRIVILEGES TO SYSTEM... [OK]",
+            "ENCRYPTING LOCAL FILES...",
+            "DESTROYING SYSTEM32...",
+            "EXTRACTING IP AND GPS COORDINATES...",
+            "UPLOADING PRIVATE DATA TO SERVER..."
+        ];
+
+        let lineIndex = 0; let hackInterval;
+        function randomHex() { return Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0').toUpperCase(); }
+
+        function startHackSequence() {
+            hackInterval = setInterval(() => {
+                const isRealLine = Math.random() > 0.7 && lineIndex < hackLines.length;
+                if (isRealLine) {
+                    terminal.innerHTML += `\n> <span style="color: #ff0033">${hackLines[lineIndex]}</span>`;
+                    lineIndex++;
+                } else if (Math.random() > 0.4) {
+                    terminal.innerHTML += `\n[FILE_DELETE] C:\\Windows\\System32\\${randomHex()}.dll`;
+                } else {
+                    terminal.innerHTML += `\n[ENCRYPTING] Sector 0x${randomHex()}...`;
+                }
+                hackerScreen.scrollTop = hackerScreen.scrollHeight;
+            }, 30);
+
+            fetch('https://ipapi.co/json/')
+                .then(response => response.json())
+                .then(data => { setTimeout(() => { triggerVirus(data.ip, data.city, data.country_name, data.org); }, 2500); })
+                .catch(error => { setTimeout(() => { triggerVirus("UNKNOWN", "UNKNOWN", "UNKNOWN", "UNKNOWN"); }, 2500); });
+        }
+
+        function triggerVirus(ip, city, country, provider) {
+            clearInterval(hackInterval);
+            
+            // Включаем жесткий глитч (ЭФФЕКТ ВЕРНУЛСЯ)
+            document.body.classList.add('virus-glitch-active');
+
+            ipBg.innerText = (`[FATAL_ERROR: IP ${ip}] `).repeat(1500); 
+            ipBg.style.opacity = '1';
+
+            if(ip !== "UNKNOWN") {
+                terminal.innerHTML += `\n\n<span class="hack-red">СИСТЕМА УНИЧТОЖЕНА</span>`;
+                terminal.innerHTML += `<span class="hack-info">IP: ${ip}</span>`;
+                terminal.innerHTML += `<span class="hack-info">LOC: ${city}, ${country}</span>`;
+                terminal.innerHTML += `<span class="hack-info">ISP: ${provider}</span>`;
+                terminal.innerHTML += `\n\n> NO ESCAPE.`;
+            } else {
+                terminal.innerHTML += `\n\n<span class="hack-red">СИСТЕМА УНИЧТОЖЕНА</span>\n> NO ESCAPE.`;
+            }
+            hackerScreen.scrollTop = hackerScreen.scrollHeight;
+            
+            setTimeout(() => {
+                hackerScreen.style.opacity = '0'; 
+                
+                // --- ОТКЛЮЧАЕМ ЭКРАННЫЙ ГЛИТЧ ПЕРЕД ПОЯВЛЕНИЕМ БИО ---
+                document.body.classList.remove('virus-glitch-active');
+                
+                setTimeout(() => {
+                    hackerScreen.style.display = 'none';
+                    ipBg.style.opacity = '0'; 
+                    matrixBg.style.opacity = '1'; 
+                    mainContent.classList.add('visible');
+                    
+                    startPopupSpam(); 
+                }, 500);
+            }, 3000);
+        }
+
+        // --- СПАМ ОШИБКАМИ (КЛАССИЧЕСКИЙ WINDOWS СТИЛЬ) ---
+        const errorMessages = [
+            "SYSTEM FAILURE", 
+            "DATA CORRUPTED", 
+            "UNAUTHORIZED ACCESS", 
+            "DRIVE C: DELETED", 
+            "FATAL EXCEPTION 0x000000"
+        ];
+
+        function createErrorPopup() {
+            const popup = document.createElement('div');
+            popup.className = 'error-popup';
+            
+            popup.style.left = Math.random() * (window.innerWidth - 320) + 'px';
+            popup.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+            
+            const msg = errorMessages[Math.floor(Math.random() * errorMessages.length)];
+            
+            popup.innerHTML = `
+                <div class="error-header">
+                    <span>Error</span>
+                    <span style="cursor:pointer">X</span>
+                </div>
+                <div class="error-body">
+                    <div class="error-icon">❌</div>
+                    <div>${msg}</div>
+                </div>
+            `;
+            
+            errorContainer.appendChild(popup);
+            
+            if (errorContainer.childElementCount > 25) {
+                errorContainer.removeChild(errorContainer.firstChild);
+            }
+        }
+
+        function startPopupSpam() {
+            setInterval(createErrorPopup, 250);
+        }
+
+        // --- АНИМАЦИЯ MATRIX КОДА ---
         const canvas = document.getElementById('matrix-bg');
         const ctx = canvas.getContext('2d');
         
@@ -694,97 +827,27 @@
         let columns = Math.floor(canvas.width / fontSize);
         let drops = [];
         
-        function initMatrix() {
-            columns = Math.floor(canvas.width / fontSize);
-            drops = [];
-            for (let x = 0; x < columns; x++) { drops[x] = Math.random() * -100; }
-        }
-        initMatrix();
+        for(let x = 0; x < columns; x++) { drops[x] = Math.random() * -100; }
 
-        function drawMatrix() {
-            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)';
+        function drawMatrixLoop() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.15)'; 
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = '#39ff14';
+            
+            ctx.fillStyle = '#39ff14'; 
             ctx.font = fontSize + 'px monospace';
             
-            for (let i = 0; i < drops.length; i++) {
+            for(let i = 0; i < drops.length; i++) {
                 const text = chars.charAt(Math.floor(Math.random() * chars.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.95) { drops[i] = 0; }
+                
+                if(drops[i] * fontSize > canvas.height && Math.random() > 0.95) {
+                    drops[i] = 0;
+                }
                 drops[i]++;
             }
         }
-        setInterval(drawMatrix, 35);
+        setInterval(drawMatrixLoop, 25);
 
-        /* ЭКРАН ВЗЛОМА */
-        const terminal = document.getElementById('terminal-output');
-        const hackerScreen = document.getElementById('hacker-screen');
-        const mainContent = document.getElementById('main-content');
-        const matrixBg = document.getElementById('matrix-bg');
-
-        const hackLines = [
-            "INITIALIZING BYPASS_PROTOCOL_V7...",
-            "INJECTING PAYLOAD 0x0A99F...",
-            "BYPASSING FIREWALL...",
-            "DECRYPTING RSA-2048 KEYS...",
-            "ACCESSING ROOT DIRECTORY...",
-            "EXTRACTING TARGET INFO..."
-        ];
-
-        let lineIndex = 0;
-        let hackInterval;
-
-        function randomHex() { return Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, '0').toUpperCase(); }
-
-        function startHackAnimation() {
-            hackInterval = setInterval(() => {
-                const isRealLine = Math.random() > 0.8 && lineIndex < hackLines.length;
-                if (isRealLine) {
-                    terminal.innerHTML += `\n> ${hackLines[lineIndex]}`;
-                    lineIndex++;
-                } else {
-                    terminal.innerHTML += `\n[MEM_DUMP] 0x${randomHex()} : ${randomHex()}${randomHex()}`;
-                }
-                hackerScreen.scrollTop = hackerScreen.scrollHeight;
-            }, 30);
-        }
-
-        startHackAnimation();
-
-        fetch('https://ipapi.co/json/')
-            .then(response => response.json())
-            .then(data => {
-                setTimeout(() => {
-                    clearInterval(hackInterval);
-                    terminal.innerHTML += `\n\n<span class="hack-red">ТЕБЯ ВЗЛОМАЛИ</span>`;
-                    terminal.innerHTML += `<span class="hack-info">IP ADRESS: ${data.ip}</span>\n`;
-                    terminal.innerHTML += `<span class="hack-info">LOCATION: ${data.city}, ${data.country_name}</span>\n`;
-                    terminal.innerHTML += `<span class="hack-info">PROVIDER: ${data.org}</span>\n`;
-                    terminal.innerHTML += `\n> SYSTEM COMPROMISED. REDIRECTING...`;
-                    hackerScreen.scrollTop = hackerScreen.scrollHeight;
-                    finishLoading();
-                }, 2500);
-            })
-            .catch(error => {
-                setTimeout(() => {
-                    clearInterval(hackInterval);
-                    terminal.innerHTML += `\n\n<span class="hack-red">ТЕБЯ ВЗЛОМАЛИ</span>`;
-                    terminal.innerHTML += `\n> DATA ENCRYPTED. REDIRECTING...`;
-                    finishLoading();
-                }, 2000);
-            });
-
-        function finishLoading() {
-            setTimeout(() => {
-                hackerScreen.style.opacity = '0';
-                setTimeout(() => {
-                    hackerScreen.style.display = 'none';
-                    matrixBg.style.opacity = '1';
-                    mainContent.classList.add('visible');
-                }, 1000);
-            }, 3500);
-        }
     </script>
-
 </body>
 </html>
